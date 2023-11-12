@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 5px;
+    }
+    #Login{
+      position: absolute;
+      text-align: center;
+      margin-top: 10%;
+      margin-left:35%;
+      height: 350px;
+      width: 350px;
+      border-style: outset;
+      border-width: 2px;
+      border-color: black;
+    }
+    .Form-Email{
+      display: flex;
+      text-align: center;
+      margin-top: 25px;
+      margin-left: 13px;
+      position: relative;
+      
+    }
+    #Button{
+      width: 315px;
+      height: 40px;
+      text-align: center;
+      background-color: blue;
+      color: aliceblue;
+      font-size: 20px;
+      padding-left: 120px;
+
+    }
+    #Email{
+      width: 300px;
+      height: 25px;
+    }
+    #Password{
+      width: 300px;
+      height: 25px;
+    }
+    
+  </style>
+</head>
+<body>
+   <div id="Login">
+  <login-form id="Form"/>
+   </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    let app = Vue.createApp({})
+    app.component('login-form',{
+      template :`
+      <form @submit.prevent="handlerSubmit">
+        <h1>{{Title}}</h1>
+        <h3>{{welcome}}</h3>
+        <input id="Email" class="Form-Email" placeholder="Username" type="email" v-model="email" />
+        <input id="Password" class="Form-Email" placeholder="Password" type="password" v-model="password" />
+        <button id="Button" class="Form-Email" >Log in</button>
+      </form>`,
+      component : ['login-form'],
+      data(){
+        return{
+          Title : 'Sign in',
+          welcome : 'Use your Google Account',
+          email : '',
+          password : ''
+        }
+      },
+      methods:{
+        handlerSubmit(){
+          console.log(this.email, this.password)
+        }
+      }
+
+    })
+    app.mount('#Login')
+ </script>
+  
+</body>
+</html>
